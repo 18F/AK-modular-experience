@@ -1,0 +1,31 @@
+/*
+----------------------------------------
+Letterspacing
+----------------------------------------
+usage:
+  .ls-[modifier]
+----------------------------------------
+output:
+  letter-spacing: [value];
+----------------------------------------
+example:
+  .ls-loose {
+    letter-spacing: .1em; }
+----------------------------------------
+*/
+
+$letter-spacing: (
+  letter-spacing: (
+    base: 'ls',
+    modifiers: null,
+    values: (
+      auto: ('auto', isReadable),
+      loose: $ls-loose,
+      xloose: $ls-xloose,
+    ),
+    property: 'letter-spacing',
+    output: true,
+    responsive: false,
+    pseudoclasses: false,
+  )
+)

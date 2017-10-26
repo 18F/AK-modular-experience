@@ -1,0 +1,145 @@
+/// Map deep get
+/// @author Hugo Giraudel
+/// @access public
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// @return {*} - Desired value
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+// multiCat()
+
+@function multiCat($list1, $list2){
+  $thisList: ();
+  @each $e in $list1 {
+    @each $ee in $list2 {
+      $thisBlock: $e + $ee;
+      $thisList: join($thisList, $thisBlock);
+    }
+  }
+  @return $thisList;
+}
+
+// map-collect()
+
+@function map-collect($maps...) {
+  $collection: ();
+
+  @each $map in $maps {
+    $collection: map-merge($collection, $map);
+  }
+  @return $collection;
+}
+
+// remove()
+
+@function remove($list, $value, $recursive: false) {
+  $result: ();
+
+  @for $i from 1 through length($list) {
+    @if type-of(nth($list, $i)) == list and $recursive {
+      $result: append($result, remove(nth($list, $i), $value, $recursive));
+    }
+
+    @else if nth($list, $i) != $value {
+      $result: append($result, nth($list, $i));
+    }
+  }
+
+  @return $result;
+}
+
+// strunquote()
+
+@function strunquote($value){
+  @if type-of($value) == 'string' {
+    $value: unquote($value);
+  }
+  @return $value;
+}
+
+// toMap()
+
+@function toMap($key, $values){
+  $l: length($values);
+  @if $key == 'noModifier' or $key == 'noValue' {
+    $key: '';
+  }
+  @if $l == 1 or nth($values, $l) != isReadable {
+    @return (
+      slug: $key,
+      content: $values,
+    );
+  } @else {
+    $values: remove($values, isReadable);
+    @return (
+      slug: $key,
+      isReadable: true,
+      content: $values,
+    );
+  }
+}
+
+// baseToMap()
+
+@function baseToMap($values){
+  $l: length($values);
+  @if $l == 1 or nth($values, $l) != isReadable {
+    @return (
+      slug: $values,
+    );
+  } @else {
+    $values: remove($values, isReadable);
+    @return (
+      slug: unquote(nth($values, 1)),
+      isReadable: true,
+    );
+  }
+}
+
+// utilitiesMap
+
+@function utilitiesMap($import){
+  $s: ();
+  @each $utility in $import {
+    $thisUtility: '$' + $utility;
+    $s: join($s, $thisUtility);
+  }
+  @return $s;
+}
+
+// grid()
+
+@function grid($grid){
+  $gridToRem: #{($grid-base * $grid / $grid-type)}rem;
+  @return $gridToRem;
+}
+
+// px()
+
+@function px($pixels){
+  $pxToRem: #{($pixels / $grid-type)}rem;
+  @return $pxToRem;
+}
+
+// typeScale()
+
+@function typeScale($capHeight, $scale){
+  $thisScale: (500 * strip-unit($scale)) / strip-unit($capHeight);
+  @return px($thisScale);
+}

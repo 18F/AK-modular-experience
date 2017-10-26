@@ -1,0 +1,207 @@
+//  GLOBAL VARIABLES
+
+// --------------------------------------------------
+// Grid
+
+// spacing is calculated on multiples of a
+// base grid (unitless, but assumed px)
+
+$grid-base:           8 !default; // unitless, but px
+
+// establishes the base type size (16px) for
+// rem calculations
+$grid-type:           16 !default; // unitless, but px
+
+// calculates multiples of the base grid in units of rem
+// grid($gridMultiple)
+
+$grid-05:             grid(.5);    // 4px
+$grid-1:              grid(1);     // 8px
+$grid-105:            grid(1.5);   // 12px
+$grid-2:              grid(2);     // 16px
+$grid-3:              grid(3);     // 24px
+$grid-4:              grid(4);     // 32px
+$grid-5:              grid(5);     // 40px
+$grid-6:              grid(6);     // 48px
+$grid-7:              grid(7);     // 56px
+$grid-8:              grid(8);     // 64px
+$grid-9:              grid(9);     // 72px
+$grid-10:             grid(10);    // 80px
+$grid-15:             grid(15);    // 80px
+$grid-20:             grid(20);    // 160px
+$grid-25:             grid(25);    // 160px
+$grid-30:             grid(30);    // 240px
+$grid-40:             grid(40);    // 320px
+$grid-50:             grid(50);    // 400px
+
+$grid-n05:            grid(-0.5);   // 4px
+$grid-n1:             grid(-1);     // 8px
+$grid-n105:           grid(-1.5);   // 12px
+$grid-n2:             grid(-2);     // 16px
+$grid-n3:             grid(-3);     // 24px
+$grid-n4:             grid(-4);     // 32px
+$grid-n5:             grid(-5);     // 40px
+
+// --------------------------------------------------
+// Breakpoints
+
+$breakpoint-sm-grid:  50;     // 400px
+$breakpoint-md-grid:  75;     // 600px
+$breakpoint-lg-grid:  100;    // 800px
+$breakpoint-xl-grid:  140;    // 1200px
+
+$breakpoint-xs:       null;
+$breakpoint-sm:       grid($breakpoint-sm-grid);
+$breakpoint-md:       grid($breakpoint-md-grid);
+$breakpoint-lg:       grid($breakpoint-lg-grid);
+$breakpoint-xl:       grid($breakpoint-xl-grid);
+
+// --------------------------------------------------
+// Widths
+
+$nav-width-grid:      75 !default;     // 600px;
+$site-max-width-grid:  75 !default;    // 1040px;
+
+$nav-width:           grid($nav-width-grid);
+$site-max-width:      grid($site-max-width-grid);
+$text-max-width:      36em;
+$text-narrow-width:   17em;
+
+// --------------------------------------------------
+// Colors
+
+$color-blue:                    #056dd4;
+$color-brightmint:              #00df99;
+$color-cream:                   #f5f5f3;
+$color-gold:                    #f4b400;
+$color-green:                   #0baf00; // dark option #438500
+$color-red:                     #be4900;
+
+$color-trueblack:               #000000;
+$color-textblack:               #333333;
+$color-darkgray:                #555555;
+$color-mediumgray:              #8e8e8e;
+$color-mediumgray-trans:        rgba(0, 0, 0, .4);
+$color-lightgray:               #d3d3d3;
+$color-lightestgray:            #f5f5f3;
+$color-white:                   #ffffff; // perhaps redundant
+
+// --------------------------------------------------
+// Paths
+
+$static-font-path: '../fonts' !default;
+$image-path: '/' !default;
+
+// --------------------------------------------------
+// Typefaces
+
+$font-sans:           '18Franklin-webfont',
+                      system,
+                      -apple-system,
+                      BlinkMacSystemFont,
+                      'Roboto',
+                      'Helvetica Neue',
+                      'Helvetica',
+                      'Arial',
+                      sans-serif;
+
+$font-serif:          'Georgia',
+                      'Cambria',
+                      'Times New Roman',
+                      'Times',
+                      serif;
+
+$font-mono:           'Roboto Mono',
+                      'Bitstream Vera Sans Mono',
+                      'Consolas',
+                      'Courier',
+                      monospace;
+
+// 500px 'N' height measured in Sketch
+
+$franklin-capheight:    371px;
+$georgia-capheight:       346px;
+$merriweather-capheight:  372px;
+$roboto-mono-capheight:   380px;
+$source-sans-capheight:   326px;
+
+$sans-capHeight:          $franklin-capheight;
+$serif-capHeight:         $georgia-capheight;
+$mono-capHeight:          $roboto-mono-capheight;
+
+
+
+// --------------------------------------------------
+// Type scale
+
+$s1:                  8px;
+$s2:                  9px;
+$s3:                  10px;
+$s4:                  11px;
+$s5:                  12px;
+$s6:                  14px;
+$s7:                  16px;
+$s8:                  18px;
+$s9:                  30px;
+$s10:                 52px;
+$s11:                 90px;
+$s12:                 120px;
+
+$mono-s1:   typeScale($mono-capHeight, $s1);
+$mono-s2:   typeScale($mono-capHeight, $s2);
+$mono-s3:   typeScale($mono-capHeight, $s3);
+$mono-s4:   typeScale($mono-capHeight, $s4);
+$mono-s5:   typeScale($mono-capHeight, $s5);
+$mono-s6:   typeScale($mono-capHeight, $s6);
+$mono-s7:   typeScale($mono-capHeight, $s7);
+$mono-s8:   typeScale($mono-capHeight, $s8);
+$mono-s9:   typeScale($mono-capHeight, $s9);
+$mono-s10:  typeScale($mono-capHeight, $s10);
+$mono-s11:  typeScale($mono-capHeight, $s11);
+$mono-s12:  typeScale($mono-capHeight, $s12);
+
+$sans-s1:   typeScale($sans-capHeight, $s1);
+$sans-s2:   typeScale($sans-capHeight, $s2);
+$sans-s3:   typeScale($sans-capHeight, $s3);
+$sans-s4:   typeScale($sans-capHeight, $s4);
+$sans-s5:   typeScale($sans-capHeight, $s5);
+$sans-s6:   typeScale($sans-capHeight, $s6);
+$sans-s7:   typeScale($sans-capHeight, $s7);
+$sans-s8:   typeScale($sans-capHeight, $s8);
+$sans-s9:   typeScale($sans-capHeight, $s9);
+$sans-s10:  typeScale($sans-capHeight, $s10);
+$sans-s11:  typeScale($sans-capHeight, $s11);
+$sans-s12:  typeScale($sans-capHeight, $s12);
+
+$serif-s1:   typeScale($serif-capHeight, $s1);
+$serif-s2:   typeScale($serif-capHeight, $s2);
+$serif-s3:   typeScale($serif-capHeight, $s3);
+$serif-s4:   typeScale($serif-capHeight, $s4);
+$serif-s5:   typeScale($serif-capHeight, $s5);
+$serif-s6:   typeScale($serif-capHeight, $s6);
+$serif-s7:   typeScale($serif-capHeight, $s7);
+$serif-s8:   typeScale($serif-capHeight, $s8);
+$serif-s9:   typeScale($serif-capHeight, $s9);
+$serif-s10:  typeScale($serif-capHeight, $s10);
+$serif-s11:  typeScale($serif-capHeight, $s11);
+$serif-s12:  typeScale($serif-capHeight, $s12);
+
+// --------------------------------------------------
+// Line height
+
+$lh-single:           1;
+$lh-hed:              1.1;
+$lh-cap:              1.3;
+$lh-body:             1.618;
+$lh-display:          1.75;
+
+// --------------------------------------------------
+// Letter-spacing
+
+$ls-loose:            .1em;
+$ls-xloose:           .15em;
+
+// --------------------------------------------------
+// Border radius
+
+$border-radius:       2px !default;

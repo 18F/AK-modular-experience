@@ -1,0 +1,30 @@
+/*
+----------------------------------------
+Float
+----------------------------------------
+usage:
+  .op[value]
+----------------------------------------
+output:
+  opacity: [value];
+----------------------------------------
+example:
+  .op0 {
+    opacity: 0; }
+----------------------------------------
+*/
+
+$opacity: (
+  opacity: (
+    base: ('op'),
+    modifiers: null,
+    values: (
+      '0': '0',
+      '100': '100',
+    ),
+    property: 'opacity',
+    output: true,
+    responsive: false,
+    pseudoclasses: false,
+  )
+)
